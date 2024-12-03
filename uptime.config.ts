@@ -159,27 +159,15 @@ const workerConfig = {
       id: 'when_ppl',
       name: 'Когда Пепеленд?',
       method: 'GET',
-      target: 'https://когдапепеленд.рф',
+      target: 'https://xn--80afdbeaa8aovdpb.xn--p1ai',
       tooltip: 'Когда Пепеленд?',
-      statusPageLink: 'https://когдапепеленд.рф',
+      statusPageLink: 'https://xn--80afdbeaa8aovdpb.xn--p1ai',
       expectedCodes: [200],
       timeout: 10000,
       headers: {
         'User-Agent': 'Uptimeflare'
       },
-    },
-    // Example TCP Monitor
-    {
-      id: 'mc-oauth',
-      name: 'MC-OAuth server',
-      // `method` should be `TCP_PING` for tcp monitors
-      method: 'TCP_PING',
-      // `target` should be `host:port` for tcp monitors
-      target: 'auth.mc-oauth.andcool.ru:25565',
-      tooltip: 'MC-OAuth server',
-      statusPageLink: 'https://mc-oauth.andcool.ru',
-      timeout: 5000,
-    },
+    }
   ],
   notification: {
   },
