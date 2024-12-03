@@ -45,7 +45,11 @@ export default function MonitorDetail({
     const monitorNameElement = (
         <Text mt="sm" fw={700} style={{ display: 'inline-flex', alignItems: 'center' }}>
             {monitor.statusPageLink ? (
-                <a href={monitor.statusPageLink} target="_blank" style={{ display: 'inline-flex', alignItems: 'center', color: 'inherit' }}>
+                <a
+                    href={monitor.statusPageLink}
+                    target="_blank"
+                    style={{ display: 'inline-flex', alignItems: 'center', color: 'inherit', gap: '5px' }}
+                >
                     {statusIcon} {monitor.name}
                 </a>
             ) : (
