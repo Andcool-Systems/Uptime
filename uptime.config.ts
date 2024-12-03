@@ -37,7 +37,6 @@ const workerConfig = {
       headers: {
         'User-Agent': 'Uptimeflare'
       },
-      checkLocationWorkerRoute: 'https://worker-route.andcool.ru'
     },
     {
       id: 'personal_new',
@@ -51,7 +50,6 @@ const workerConfig = {
       headers: {
         'User-Agent': 'Uptimeflare'
       },
-      checkLocationWorkerRoute: 'https://worker-route.andcool.ru'
     },
     {
       id: 'fu',
@@ -65,7 +63,6 @@ const workerConfig = {
       headers: {
         'User-Agent': 'Uptimeflare'
       },
-      checkLocationWorkerRoute: 'https://worker-route.andcool.ru'
     },
     {
       id: 'fu_api',
@@ -79,7 +76,6 @@ const workerConfig = {
       headers: {
         'User-Agent': 'Uptimeflare'
       },
-      checkLocationWorkerRoute: 'https://worker-route.andcool.ru'
     },
     {
       id: 'pplbandage',
@@ -93,7 +89,6 @@ const workerConfig = {
       headers: {
         'User-Agent': 'Uptimeflare'
       },
-      checkLocationWorkerRoute: 'https://worker-route.andcool.ru'
     },
     {
       id: 'pplbandage_api',
@@ -107,7 +102,6 @@ const workerConfig = {
       headers: {
         'User-Agent': 'Uptimeflare'
       },
-      checkLocationWorkerRoute: 'https://worker-route.andcool.ru'
     },
     {
       id: 'weather',
@@ -121,7 +115,6 @@ const workerConfig = {
       headers: {
         'User-Agent': 'Uptimeflare'
       },
-      checkLocationWorkerRoute: 'https://worker-route.andcool.ru'
     },
     {
       id: 'weather_api',
@@ -135,7 +128,6 @@ const workerConfig = {
       headers: {
         'User-Agent': 'Uptimeflare'
       },
-      checkLocationWorkerRoute: 'https://worker-route.andcool.ru'
     },
     {
       id: 'activity',
@@ -149,7 +141,6 @@ const workerConfig = {
       headers: {
         'User-Agent': 'Uptimeflare'
       },
-      checkLocationWorkerRoute: 'https://worker-route.andcool.ru'
     },
     {
       id: 'mc-oauth-api',
@@ -163,7 +154,6 @@ const workerConfig = {
       headers: {
         'User-Agent': 'Uptimeflare'
       },
-      checkLocationWorkerRoute: 'https://worker-route.andcool.ru'
     },
     {
       id: 'when_ppl',
@@ -177,7 +167,6 @@ const workerConfig = {
       headers: {
         'User-Agent': 'Uptimeflare'
       },
-      checkLocationWorkerRoute: 'https://worker-route.andcool.ru'
     }
   ],
   notification: {
