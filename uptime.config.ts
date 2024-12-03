@@ -37,6 +37,7 @@ const workerConfig = {
       headers: {
         'User-Agent': 'Uptimeflare'
       },
+      checkLocationWorkerRoute: 'https://worker-route.andcool.ru'
     },
     {
       id: 'personal_new',
@@ -167,6 +168,7 @@ const workerConfig = {
       headers: {
         'User-Agent': 'Uptimeflare'
       },
+      checkLocationWorkerRoute: 'https://worker-route.andcool.ru'
     }
   ],
   notification: {
