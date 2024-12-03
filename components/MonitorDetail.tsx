@@ -6,71 +6,75 @@ import DetailBar from './DetailBar'
 import { getColor } from '@/util/color'
 
 export default function MonitorDetail({
-  monitor,
-  state,
+    monitor,
+    state,
 }: {
-  monitor: MonitorTarget
-  state: MonitorState
+    monitor: MonitorTarget
+    state: MonitorState
 }) {
-  if (!state.latency[monitor.id])
-    return (
-      <>
-        <Text mt="sm" fw={700}>
-          {monitor.name}
-        </Text>
-        <Text mt="sm" fw={700}>
-          No data available, please make sure you have deployed your workers with latest config and
-          check your worker status!
-        </Text>
-      </>
-    )
+    if (!state.latency[monitor.id])
+        return (
+            <>
+                <Text mt="sm" fw={700}>
+                    {monitor.name}
+                </Text>
+                <Text mt="sm" fw={700}>
+                    No data available, please make sure you have deployed your workers with latest config and
+                    check your worker status!
+                </Text>
+            </>
+        )
 
-  const statusIcon =
-    state.incident[monitor.id].slice(-1)[0].end === undefined ? (
-      <IconAlertCircle style={{ width: '1.25em', height: '1.25em', color: '#b91c1c' }} />
-    ) : (
-      <IconCircleCheck style={{ width: '1.25em', height: '1.25em', color: '#059669' }} />
-    )
-
-  let totalTime = Date.now() / 1000 - state.incident[monitor.id][0].start[0]
-  let downTime = 0
-  for (let incident of state.incident[monitor.id]) {
-    downTime += (incident.end ?? Date.now() / 1000) - incident.start[0]
-  }
-
-  const uptimePercent = (((totalTime - downTime) / totalTime) * 100).toPrecision(4)
-
-  // Conditionally render monitor name with or without hyperlink based on monitor.url presence
-  const monitorNameElement = (
-    <Text mt="sm" fw={700} style={{ display: 'inline-flex', alignItems: 'center' }}>
-      {monitor.statusPageLink ? (
-        <a href={monitor.statusPageLink} target="_blank" style={{ display: 'inline-flex', alignItems: 'center', color: 'inherit' }}>
-          {statusIcon} {monitor.name}
-        </a>
-      ) : (
-        <>
-          {statusIcon} {monitor.name}
-        </>
-      )}
-    </Text>
-  )
-
-  return (
-    <>
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        {monitor.tooltip ? (
-          <Tooltip label={monitor.tooltip}>{monitorNameElement}</Tooltip>
+    const statusIcon =
+        state.incident[monitor.id].slice(-1)[0].end === undefined ? (
+            <IconAlertCircle style={{ width: '1.25em', height: '1.25em', color: '#b91c1c' }} />
         ) : (
-          monitorNameElement
-        )}
+            <IconCircleCheck style={{ width: '1.25em', height: '1.25em', color: '#059669' }} />
+        )
 
-        <Text mt="sm" fw={700} style={{ display: 'inline', color: getColor(uptimePercent, true) }}>
-          Overall: {uptimePercent}%
+    let totalTime = Date.now() / 1000 - state.incident[monitor.id][0].start[0]
+    let downTime = 0
+    for (let incident of state.incident[monitor.id]) {
+        downTime += (incident.end ?? Date.now() / 1000) - incident.start[0]
+    }
+
+    const uptimePercent = (((totalTime - downTime) / totalTime) * 100).toPrecision(4);
+
+
+    // Conditionally render monitor name with or without hyperlink based on monitor.url presence
+    const monitorNameElement = (
+        <Text mt="sm" fw={700} style={{ display: 'inline-flex', alignItems: 'center' }}>
+            {monitor.statusPageLink ? (
+                <a href={monitor.statusPageLink} target="_blank" style={{ display: 'inline-flex', alignItems: 'center', color: 'inherit' }}>
+                    {statusIcon} {monitor.name}
+                </a>
+            ) : (
+                <>
+                    {statusIcon} {monitor.name}
+                </>
+            )}
         </Text>
-      </div>
+    )
 
-      <DetailBar monitor={monitor} state={state} />
-      <DetailChart monitor={monitor} state={state} />
-    </>
-  )
+    const all_pings = state.latency[monitor.id].recent.filter(rec => rec.ping !== 0).length;
+    const average_ping = state.latency[monitor.id].recent.map(rec => rec.ping).reduce((acc, rec) => acc + rec);
+
+    return (
+        <>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                {monitor.tooltip ? (
+                    <Tooltip label={monitor.tooltip}>{monitorNameElement}</Tooltip>
+                ) : (
+                    monitorNameElement
+                )}
+
+                <Text mt="sm" fw={700} style={{ display: 'inline', color: getColor(uptimePercent, true) }}>
+                    Avg. Ping: {(average_ping / all_pings).toFixed(2)}ms Overall: {uptimePercent}%
+                </Text>
+            </div>
+
+            <DetailBar monitor={monitor} state={state} />
+            <DetailChart monitor={monitor} state={state} />
+        </>
+    )
 }
