@@ -193,10 +193,10 @@ const workerConfig = {
       timeNow: number,
       reason: string
     ) => {
-      const message = `---------------------------------------` + 
+      const message = `---------------------------------------\n` + 
                       `Service **${monitor.name}** status has been changed\n` + 
                       `**${isUp ? 'Operation restored' : 'Failed to complete request to service'}**\n\n` + 
-                      `message: ${reason}` + 
+                      `message: ${reason}\n` + 
                       `---------------------------------------`
 
       fetch(`https://discord.com/api/v10/channels/1313536498347413564/messages`, {
