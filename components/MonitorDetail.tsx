@@ -69,8 +69,8 @@ export default function MonitorDetail({
                 )}
 
                 <Text mt="sm" fw={700} style={{ display: 'inline', color: getColor(uptimePercent, true) }}>
-                    Avg. Ping: {(average_ping / all_pings).toFixed(0)}ms<br />
-                    Overall: {uptimePercent}%
+                    Overall: {uptimePercent}%<br />
+                    Latency: {(average_ping / all_pings).toFixed(0)}ms
                 </Text>
             </div>
 
