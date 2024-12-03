@@ -186,7 +186,7 @@ const workerConfig = {
                       `**Message**: ${reason}\n` + 
                       `---------------------------------------`
 
-      fetch(`https://discord.com/api/v10/channels/1313536498347413564/messages`, {
+      await fetch(`https://discord.com/api/v10/channels/1313536498347413564/messages`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -195,9 +195,7 @@ const workerConfig = {
         body: JSON.stringify({
           content: message
         })
-      })
-      .then(response => response.json())
-      .then(console.log);
+      });
     },
     onIncident: async (
       env: any,
