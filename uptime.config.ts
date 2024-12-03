@@ -104,6 +104,19 @@ const workerConfig = {
       },
     },
     {
+      id: 'discord',
+      name: 'Discord Open Graph provider',
+      method: 'GET',
+      target: 'https://discord.andcool.ru/123/123',
+      tooltip: 'Discord Open Graph provider',
+      statusPageLink: 'https://discord.andcool.ru',
+      expectedCodes: [404],
+      timeout: 10000,
+      headers: {
+        'User-Agent': 'Uptimeflare'
+      }
+    },
+    {
       id: 'weather',
       name: 'Weather Widget Site',
       method: 'GET',
@@ -180,11 +193,11 @@ const workerConfig = {
       timeNow: number,
       reason: string
     ) => {
-      const message = `---------------------------------------\n` + 
-                      `Service **${monitor.name}** status has been changed\n` + 
-                      `**${isUp ? 'Operation restored' : 'Failed to complete request to service'}**\n\n` + 
-                      `**Message**: ${reason}\n` + 
-                      `---------------------------------------`
+      const message = `---------------------------------------\n` +
+        `Service **${monitor.name}** status has been changed\n` +
+        `**${isUp ? 'Operation restored' : 'Failed to complete request to service'}**\n\n` +
+        `**Message**: ${reason}\n` +
+        `---------------------------------------`
 
       await fetch(`https://discord.com/api/v10/channels/1313536498347413564/messages`, {
         method: "POST",
