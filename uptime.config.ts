@@ -167,19 +167,6 @@ const workerConfig = {
       headers: {
         'User-Agent': 'Uptimeflare'
       },
-    },
-    {
-      id: 'justatest',
-      name: 'Just A Test',
-      method: 'GET',
-      target: 'https://aaaaa.andcool.ru',
-      tooltip: 'Just A Test',
-      statusPageLink: 'https://aaaaa.andcool.ru',
-      expectedCodes: [200],
-      timeout: 10000,
-      headers: {
-        'User-Agent': 'Uptimeflare'
-      },
     }
   ],
   notification: {
@@ -196,7 +183,7 @@ const workerConfig = {
       const message = `---------------------------------------\n` + 
                       `Service **${monitor.name}** status has been changed\n` + 
                       `**${isUp ? 'Operation restored' : 'Failed to complete request to service'}**\n\n` + 
-                      `message: ${reason}\n` + 
+                      `**Message**: ${reason}\n` + 
                       `---------------------------------------`
 
       fetch(`https://discord.com/api/v10/channels/1313536498347413564/messages`, {
