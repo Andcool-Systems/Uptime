@@ -36,8 +36,7 @@ const workerConfig = {
       // [OPTIONAL] headers to be sent
       headers: {
         'User-Agent': 'Uptimeflare'
-      },
-      checkLocationWorkerRoute: 'https://worker-route.andcool.ru'
+      }
     },
     {
       id: 'personal_new',
