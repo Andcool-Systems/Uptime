@@ -167,6 +167,19 @@ const workerConfig = {
       headers: {
         'User-Agent': 'Uptimeflare'
       },
+    },
+    {
+      id: 'justatest',
+      name: 'Just A Test',
+      method: 'GET',
+      target: 'https://aaaaa.andcool.ru',
+      tooltip: 'Just A Test',
+      statusPageLink: 'https://aaaaa.andcool.ru',
+      expectedCodes: [200],
+      timeout: 10000,
+      headers: {
+        'User-Agent': 'Uptimeflare'
+      },
     }
   ],
   notification: {
@@ -180,6 +193,7 @@ const workerConfig = {
       timeNow: number,
       reason: string
     ) => {
+      console.log(env)
       // This callback will be called when there's a status change for any monitor
       // Write any Typescript code here
 
