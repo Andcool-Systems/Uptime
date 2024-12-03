@@ -193,12 +193,20 @@ const workerConfig = {
       timeNow: number,
       reason: string
     ) => {
-      console.log(env)
-      // This callback will be called when there's a status change for any monitor
-      // Write any Typescript code here
+      const message = `Состояние сервиса ${monitor.name} изменилось!\n` + 
+                      `${isUp ? 'Работа восстановлена!' : 'Не удалось выполнить запрос к сервису'}\n\n` + 
+                      reason
 
-      // This will not follow the grace period settings and will be called immediately when the status changes
-      // You need to handle the grace period manually if you want to implement it
+      fetch(`https://discord.com/api/v10/channels/1313536498347413564/messages`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          'Authorization': `Bot ${env.DISCORD_TOKEN}`
+        },
+        body: JSON.stringify({
+          content: message
+        })
+      });
     },
     onIncident: async (
       env: any,
