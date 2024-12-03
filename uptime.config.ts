@@ -155,6 +155,19 @@ const workerConfig = {
         'User-Agent': 'Uptimeflare'
       },
     },
+    {
+      id: 'when_ppl',
+      name: 'Когда Пепеленд?',
+      method: 'GET',
+      target: 'https://когдапепеленд.рф',
+      tooltip: 'Когда Пепеленд?',
+      statusPageLink: 'https://когдапепеленд.рф',
+      expectedCodes: [200],
+      timeout: 10000,
+      headers: {
+        'User-Agent': 'Uptimeflare'
+      },
+    },
     // Example TCP Monitor
     {
       id: 'mc-oauth',
