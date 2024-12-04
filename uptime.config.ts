@@ -195,11 +195,14 @@ const workerConfig = {
         ) => {
             const downtimeDuration = Math.round((timeNow - timeIncidentStart) / 60);
 
-            const message = `---------------------------------------\n` +
-                `Service *${monitor.name}* status has been changed\n` +
-                `*${isUp ? `✅ The service is up again after being down for ${downtimeDuration} minutes.` :
-                    `🔴 Service is unavailable. Issue: ${reason || 'unspecified'}`}*\n` +
-                `---------------------------------------`
+            let message = '';
+            if (isUp) {
+                message = `✅ *${monitor.name}* is up!\n` +
+                    `The service is up again after being down for *${downtimeDuration} minutes.*`
+            } else {
+                message = `🔴 *${monitor.name}* is currently down.\n` +
+                    `Service is unavailable. *Issue:* ${reason || 'unspecified'}`
+            }
 
             await fetch(`https://api.telegram.org/bot${env.TG_TOKEN}/sendMessage`, {
                 method: "POST",
