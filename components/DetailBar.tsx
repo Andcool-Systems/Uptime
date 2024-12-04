@@ -2,7 +2,6 @@ import { MonitorState, MonitorTarget } from '@/uptime.types'
 import { getColor } from '@/util/color'
 import { Box, Tooltip } from '@mantine/core'
 import { useResizeObserver } from '@mantine/hooks'
-import { useLayoutEffect, useRef, useState } from 'react'
 const moment = require('moment')
 require('moment-precise-range-plugin')
 
@@ -22,7 +21,7 @@ export default function DetailBar({
     const uptimePercentBars = []
 
     const currentTime = Math.round(Date.now() / 1000)
-    const montiorStartTime = state.incident[monitor.id][0].start[0]
+    const monitorStartTime = state.incident[monitor.id][0].start[0]
 
     const todayStart = new Date()
     todayStart.setHours(0, 0, 0, 0)
@@ -31,7 +30,7 @@ export default function DetailBar({
         const dayStart = Math.round(todayStart.getTime() / 1000) - i * 86400
         const dayEnd = dayStart + 86400
 
-        const dayMonitorTime = overlapLen(dayStart, dayEnd, montiorStartTime, currentTime)
+        const dayMonitorTime = overlapLen(dayStart, dayEnd, monitorStartTime, currentTime)
         let dayDownTime = 0
 
         for (let incident of state.incident[monitor.id]) {
@@ -54,10 +53,12 @@ export default function DetailBar({
                     ) : (
                         <>
                             <div>{dayPercent + '% at ' + new Date(dayStart * 1000).toLocaleDateString()}</div>
-                            {dayDownTime > 0 && (
+                            {dayDownTime > 0 ?
                                 <div>{`Down for ${moment.preciseDiff(moment(0), moment(dayDownTime * 1000))}`}</div>
-                            )}
-                            {/* TODO: lantency detail for each bar */}
+                                :
+                                <div>No incidents found</div>
+                            }
+                            {/* TODO: latency detail for each bar */}
                         </>
                     )
                 }
