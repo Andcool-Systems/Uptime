@@ -180,6 +180,20 @@ const workerConfig = {
             headers: {
                 'User-Agent': 'Uptimeflare'
             },
+        },
+        {
+            id: 'test',
+            name: 'Just A Test',
+            method: 'GET',
+            target: 'https://xn--80afdbeaa8aovdpb.xn--p1ai',
+            tooltip: 'Just A Test',
+            statusPageLink: 'https://xn--80afdbeaa8aovdpb.xn--p1ai',
+            expectedCodes: [200],
+            timeout: 10000,
+            headers: {
+                'User-Agent': 'Uptimeflare'
+            },
+            checkLocationWorkerRoute: 'https://worker-route.andcool.ru/'
         }
     ],
     notification: {
