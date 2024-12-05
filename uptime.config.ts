@@ -81,7 +81,7 @@ const workerConfig = {
             id: 'pplbandage',
             name: 'PPLBandage Site',
             method: 'GET',
-            target: 'https://pplbandage.ru',
+            target: 'https://pplbandage.ru/admin/ping',
             tooltip: 'PPLBandage Site',
             statusPageLink: 'https://pplbandage.ru',
             expectedCodes: [200],
