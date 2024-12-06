@@ -32,7 +32,7 @@ const workerConfig = {
             // [OPTIONAL] `expectedCodes` is an array of acceptable HTTP response codes, if not specified, default to 2xx
             expectedCodes: [200],
             // [OPTIONAL] `timeout` in millisecond, if not specified, default to 10000
-            timeout: 10000,
+            timeout: 30000,
             // [OPTIONAL] headers to be sent
             headers: {
                 'User-Agent': 'Uptimeflare'
@@ -46,7 +46,7 @@ const workerConfig = {
             tooltip: 'My new personal website',
             statusPageLink: 'https://new.andcool.ru',
             expectedCodes: [200],
-            timeout: 10000,
+            timeout: 30000,
             headers: {
                 'User-Agent': 'Uptimeflare'
             },
@@ -59,7 +59,7 @@ const workerConfig = {
             tooltip: 'File Uploader',
             statusPageLink: 'https://fu.andcool.ru',
             expectedCodes: [200],
-            timeout: 10000,
+            timeout: 30000,
             headers: {
                 'User-Agent': 'Uptimeflare'
             },
@@ -72,7 +72,7 @@ const workerConfig = {
             tooltip: 'File Uploader API',
             statusPageLink: 'https://fu.andcool.ru/api',
             expectedCodes: [200],
-            timeout: 10000,
+            timeout: 30000,
             headers: {
                 'User-Agent': 'Uptimeflare'
             },
@@ -85,7 +85,7 @@ const workerConfig = {
             tooltip: 'PPLBandage Site',
             statusPageLink: 'https://pplbandage.ru',
             expectedCodes: [200],
-            timeout: 10000,
+            timeout: 30000,
             headers: {
                 'User-Agent': 'Uptimeflare'
             },
@@ -98,7 +98,7 @@ const workerConfig = {
             tooltip: 'PPLBandage API',
             statusPageLink: 'https://pplbandage.ru/api/v1',
             expectedCodes: [200],
-            timeout: 10000,
+            timeout: 30000,
             headers: {
                 'User-Agent': 'Uptimeflare'
             },
@@ -111,7 +111,7 @@ const workerConfig = {
             tooltip: 'Discord Open Graph provider',
             statusPageLink: 'https://discord.andcool.ru',
             expectedCodes: [404],
-            timeout: 10000,
+            timeout: 30000,
             headers: {
                 'User-Agent': 'Uptimeflare'
             }
@@ -124,7 +124,7 @@ const workerConfig = {
             tooltip: 'Weather Widget Site',
             statusPageLink: 'https://weather.andcool.ru',
             expectedCodes: [200],
-            timeout: 10000,
+            timeout: 30000,
             headers: {
                 'User-Agent': 'Uptimeflare'
             },
@@ -137,7 +137,7 @@ const workerConfig = {
             tooltip: 'Weather Widget API',
             statusPageLink: 'https://weather.andcool.ru/api',
             expectedCodes: [200, 400],
-            timeout: 10000,
+            timeout: 30000,
             headers: {
                 'User-Agent': 'Uptimeflare'
             },
@@ -150,7 +150,7 @@ const workerConfig = {
             tooltip: 'Andcool Activity API',
             statusPageLink: 'https://activity.andcool.ru',
             expectedCodes: [200, 404],
-            timeout: 10000,
+            timeout: 30000,
             headers: {
                 'User-Agent': 'Uptimeflare'
             },
@@ -163,7 +163,7 @@ const workerConfig = {
             tooltip: 'MC-OAuth API',
             statusPageLink: 'https://mc-oauth.andcool.ru/code',
             expectedCodes: [200, 404],
-            timeout: 10000,
+            timeout: 30000,
             headers: {
                 'User-Agent': 'Uptimeflare'
             },
@@ -176,7 +176,7 @@ const workerConfig = {
             tooltip: 'Когда Пепеленд?',
             statusPageLink: 'https://xn--80afdbeaa8aovdpb.xn--p1ai',
             expectedCodes: [200],
-            timeout: 10000,
+            timeout: 30000,
             headers: {
                 'User-Agent': 'Uptimeflare'
             },

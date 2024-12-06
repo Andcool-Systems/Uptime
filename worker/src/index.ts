@@ -16,7 +16,7 @@ export default {
             return new Response('Remote worker is working...', { status: 405 })
         }
 
-        const targetId = (await request.json<{ target: string }>())['target']
+        const targetId = (await request.json<{ target: string }>()).target;
         const target = workerConfig.monitors.find((m) => m.id === targetId)
 
         if (target === undefined) {
