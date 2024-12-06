@@ -19,21 +19,22 @@ export async function getStatus(
             // This is not a real https connection, but we need to add a dummy `https://` to parse the hostname & port
             const parsed = new URL("https://" + monitor.target)
             const socket = connect({ hostname: parsed.hostname, port: Number(parsed.port) })
-
+            const timeout = monitor.timeout || 10000;
             // Now we have an `opened` promise!
             // @ts-ignore
-            await withTimeout(monitor.timeout || 10000, socket.opened)
+            await withTimeout(timeout, socket.opened)
             await socket.close()
 
             console.log(`${monitor.name} connected to ${monitor.target}`)
 
-            status.ping = Date.now() - startTime
-            status.up = true
-            status.err = ''
+            const ping = Date.now() - startTime;
+            status.ping = ping < timeout ? ping : 0;
+            status.up = true;
+            status.err = '';
         } catch (e: Error | any) {
             console.log(`${monitor.name} errored with ${e.name}: ${e.message}`)
             if (e.message.includes('timed out')) {
-                status.ping = monitor.timeout || 10000
+                status.ping = 0;
             }
             status.up = false
             status.err = e.name + ': ' + e.message
