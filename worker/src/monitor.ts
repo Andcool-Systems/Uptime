@@ -42,7 +42,8 @@ export async function getStatus(
     } else {
         // HTTP endpoint monitor
         try {
-            const response = await fetchTimeout(monitor.target, monitor.timeout || 10000, {
+            const timeout = monitor.timeout || 10000;
+            const response = await fetchTimeout(monitor.target, timeout, {
                 method: monitor.method,
                 headers: monitor.headers as any,
                 body: monitor.body,
@@ -54,7 +55,8 @@ export async function getStatus(
             })
 
             console.log(`${monitor.name} responded with ${response.status}`)
-            status.ping = Date.now() - startTime
+            const ping = Date.now() - startTime;
+            status.ping = ping < timeout ? ping : 0;
 
             if (monitor.expectedCodes) {
                 if (!monitor.expectedCodes.includes(response.status)) {
@@ -88,7 +90,7 @@ export async function getStatus(
         } catch (e: any) {
             console.log(`${monitor.name} errored with ${e.name}: ${e.message}`)
             if (e.name === 'AbortError') {
-                status.ping = monitor.timeout || 10000
+                status.ping = 0;
                 status.up = false
                 status.err = `Timeout after ${status.ping}ms`
             } else {

@@ -60,7 +60,7 @@ export default function MonitorDetail({
         </Text>
     )
 
-    const all_pings = state.latency[monitor.id].recent.filter(rec => rec.ping !== 0).length;
+    const all_pings = state.latency[monitor.id].recent.filter(rec => rec.ping > 0).length;
     const average_ping = state.latency[monitor.id].recent.map(rec => rec.ping).reduce((acc, rec) => acc + rec);
 
     return (
