@@ -18,7 +18,7 @@ function getColor(percent: number | string, darker: boolean): string {
 
 	if (Number.isNaN(Number(percent))) return 'gray';
 
-	const step = 0.2;
+	const step = 0.5;
 
 	percent = Math.round(Number(percent) / step) * step;
 	percent = Math.max(98, Math.min(percent, 100));
