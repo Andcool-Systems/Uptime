@@ -18,9 +18,9 @@ function getColor(percent: number | string, darker: boolean): string {
 
 	if (Number.isNaN(Number(percent))) return 'gray';
 
-	percent = Math.max(80, Math.min(Number(percent), 100));
-	const l = map(percent, 80, 100, 55, 65);
-	return `hsl(${map(percent, 80, 100, 0, 120)}deg, ${100}%, ${l}%)`;
+	percent = Math.max(90, Math.min(Number(percent), 100));
+	const l = map(percent, 90, 100, 55, 65);
+	return `hsl(${map(percent, 90, 100, 0, 120)}deg, ${100}%, ${l}%)`;
 }
 
 const map = (value: number, inMin: number, inMax: number, outMin: number, outMax: number): number =>
