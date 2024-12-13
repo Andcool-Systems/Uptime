@@ -81,10 +81,10 @@ const workerConfig = {
             id: 'pplbandage',
             name: 'PPLBandage Site',
             method: 'GET',
-            target: 'https://pplbandage.ru/admin/ping',
+            target: 'https://pplbandage.ru/users',
             tooltip: 'PPLBandage Site',
             statusPageLink: 'https://pplbandage.ru',
-            expectedCodes: [200],
+            expectedCodes: [200, 307],
             timeout: 30000,
             headers: {
                 'User-Agent': 'Uptimeflare'
