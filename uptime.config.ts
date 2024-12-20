@@ -104,6 +104,19 @@ const workerConfig = {
             },
         },
         {
+            id: 'json_stats',
+            name: 'JSON Stats Widget',
+            method: 'GET',
+            target: 'https://json-stats.andcool.ru',
+            tooltip: 'JSON Stats Widget',
+            statusPageLink: 'https://github.com/Andcool-Systems/json-stats',
+            expectedCodes: [200],
+            timeout: 30000,
+            headers: {
+                'User-Agent': 'Uptimeflare'
+            }
+        },
+        {
             id: 'discord',
             name: 'Discord Open Graph provider',
             method: 'GET',
