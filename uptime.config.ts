@@ -208,7 +208,7 @@ const workerConfig = {
         ) => {
             const downtimeDuration = Math.round((timeNow - timeIncidentStart) / 60);
 
-            let message = '';
+            let message: string;
             if (isUp) {
                 message = `✅ *${monitor.name}* is up!\n` +
                     `The service is up again after being down for *${downtimeDuration} minutes.*`
