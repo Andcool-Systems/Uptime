@@ -18,7 +18,7 @@ const workerConfig = {
         // Example HTTP Monitor
         {
             // `id` should be unique, history will be kept if the `id` remains constant
-            id: 'personal',
+            id: 'personal_old',
             // `name` is used at status page and callback message
             name: 'Personal Site',
             // `method` should be a valid HTTP Method
