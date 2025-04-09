@@ -39,19 +39,6 @@ const workerConfig = {
             }
         },
         {
-            id: 'personal_new',
-            name: 'New Personal Site',
-            method: 'GET',
-            target: 'https://new.andcool.ru',
-            tooltip: 'My new personal website',
-            statusPageLink: 'https://new.andcool.ru',
-            expectedCodes: [200],
-            timeout: 30000,
-            headers: {
-                'User-Agent': 'Uptimeflare'
-            },
-        },
-        {
             id: 'fu',
             name: 'File Uploader Site',
             method: 'GET',
