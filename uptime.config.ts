@@ -18,7 +18,7 @@ const workerConfig = {
         // Example HTTP Monitor
         {
             // `id` should be unique, history will be kept if the `id` remains constant
-            id: 'personal_old',
+            id: 'personal',
             // `name` is used at status page and callback message
             name: 'Personal Site',
             // `method` should be a valid HTTP Method
@@ -37,32 +37,6 @@ const workerConfig = {
             headers: {
                 'User-Agent': 'Uptimeflare'
             }
-        },
-        {
-            id: 'fu',
-            name: 'File Uploader Site',
-            method: 'GET',
-            target: 'https://fu.andcool.ru',
-            tooltip: 'File Uploader',
-            statusPageLink: 'https://fu.andcool.ru',
-            expectedCodes: [200],
-            timeout: 30000,
-            headers: {
-                'User-Agent': 'Uptimeflare'
-            },
-        },
-        {
-            id: 'fu_api',
-            name: 'File Uploader API',
-            method: 'GET',
-            target: 'https://fu.andcool.ru/api',
-            tooltip: 'File Uploader API',
-            statusPageLink: 'https://fu.andcool.ru/api',
-            expectedCodes: [200],
-            timeout: 30000,
-            headers: {
-                'User-Agent': 'Uptimeflare'
-            },
         },
         {
             id: 'pplbandage',
@@ -84,6 +58,32 @@ const workerConfig = {
             target: 'https://pplbandage.ru/api/v1/ping',
             tooltip: 'PPLBandage API',
             statusPageLink: 'https://pplbandage.ru/api/v1',
+            expectedCodes: [200],
+            timeout: 30000,
+            headers: {
+                'User-Agent': 'Uptimeflare'
+            },
+        },
+        {
+            id: 'fu',
+            name: 'File Uploader Site',
+            method: 'GET',
+            target: 'https://fu.andcool.ru',
+            tooltip: 'File Uploader',
+            statusPageLink: 'https://fu.andcool.ru',
+            expectedCodes: [200],
+            timeout: 30000,
+            headers: {
+                'User-Agent': 'Uptimeflare'
+            },
+        },
+        {
+            id: 'fu_api',
+            name: 'File Uploader API',
+            method: 'GET',
+            target: 'https://fu.andcool.ru/api',
+            tooltip: 'File Uploader API',
+            statusPageLink: 'https://fu.andcool.ru/api',
             expectedCodes: [200],
             timeout: 30000,
             headers: {
