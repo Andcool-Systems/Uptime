@@ -117,32 +117,6 @@ const workerConfig = {
             }
         },
         {
-            id: 'weather',
-            name: 'Weather Widget Site',
-            method: 'GET',
-            target: 'https://weather.andcool.ru',
-            tooltip: 'Weather Widget Site',
-            statusPageLink: 'https://weather.andcool.ru',
-            expectedCodes: [200],
-            timeout: 30000,
-            headers: {
-                'User-Agent': 'Uptimeflare'
-            },
-        },
-        {
-            id: 'weather_api',
-            name: 'Weather Widget API',
-            method: 'GET',
-            target: 'https://weather.andcool.ru/api',
-            tooltip: 'Weather Widget API',
-            statusPageLink: 'https://weather.andcool.ru/api',
-            expectedCodes: [200, 400],
-            timeout: 30000,
-            headers: {
-                'User-Agent': 'Uptimeflare'
-            },
-        },
-        {
             id: 'activity',
             name: 'Andcool Activity API',
             method: 'GET',
