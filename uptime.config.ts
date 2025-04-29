@@ -65,30 +65,15 @@ const workerConfig = {
             },
         },
         {
-            id: 'fu',
-            name: 'File Uploader Site',
+            id: 'pepsi_site',
+            name: 'PEPSI Site',
             method: 'GET',
-            target: 'https://fu.andcool.ru',
-            tooltip: 'File Uploader',
-            statusPageLink: 'https://fu.andcool.ru',
+            target: 'https://pepsi.andcool.ru',
+            tooltip: 'PEPSI Site',
+            statusPageLink: 'https://pepsi.andcool.ru',
             expectedCodes: [200],
             timeout: 30000,
-            headers: {
-                'User-Agent': 'Uptimeflare'
-            },
-        },
-        {
-            id: 'fu_api',
-            name: 'File Uploader API',
-            method: 'GET',
-            target: 'https://fu.andcool.ru/api',
-            tooltip: 'File Uploader API',
-            statusPageLink: 'https://fu.andcool.ru/api',
-            expectedCodes: [200],
-            timeout: 30000,
-            headers: {
-                'User-Agent': 'Uptimeflare'
-            },
+            headers: {},
         },
         {
             id: 'json_stats',
