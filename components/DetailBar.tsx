@@ -1,46 +1,53 @@
-import { MonitorState, MonitorTarget } from '@/uptime.types'
-import { getColor } from '@/util/color'
-import { Box, Tooltip } from '@mantine/core'
-import { useResizeObserver } from '@mantine/hooks'
-const moment = require('moment')
-require('moment-precise-range-plugin')
+import { MonitorState, MonitorTarget } from '@/uptime.types';
+import { getColor } from '@/util/color';
+import { Box, Tooltip } from '@mantine/core';
+import { useResizeObserver } from '@mantine/hooks';
+const moment = require('moment');
+require('moment-precise-range-plugin');
 
 export default function DetailBar({
     monitor,
-    state,
+    state
 }: {
-    monitor: MonitorTarget
-    state: MonitorState
+    monitor: MonitorTarget;
+    state: MonitorState;
 }) {
-    const [barRef, barRect] = useResizeObserver()
+    const [barRef, barRect] = useResizeObserver();
 
     const overlapLen = (x1: number, x2: number, y1: number, y2: number) => {
-        return Math.max(0, Math.min(x2, y2) - Math.max(x1, y1))
-    }
+        return Math.max(0, Math.min(x2, y2) - Math.max(x1, y1));
+    };
 
-    const uptimePercentBars = []
+    const uptimePercentBars = [];
 
-    const currentTime = Math.round(Date.now() / 1000)
-    const monitorStartTime = state.incident[monitor.id][0].start[0]
+    const currentTime = Math.round(Date.now() / 1000);
 
-    const todayStart = new Date()
-    todayStart.setHours(0, 0, 0, 0)
+    const todayStart = new Date();
+    todayStart.setHours(0, 0, 0, 0);
 
     for (let i = 89; i >= 0; i--) {
-        const dayStart = Math.round(todayStart.getTime() / 1000) - i * 86400
-        const dayEnd = dayStart + 86400
+        const dayStart = Math.round(todayStart.getTime() / 1000) - i * 86400;
+        const dayEnd = dayStart + 86400;
 
-        const dayMonitorTime = overlapLen(dayStart, dayEnd, monitorStartTime, currentTime)
-        let dayDownTime = 0
+        const dayMonitorTime = 60 * 60 * 24;
+        let dayDownTime = 0;
 
         for (let incident of state.incident[monitor.id]) {
-            const incidentStart = incident.start[0]
-            const incidentEnd = incident.end ?? currentTime
+            const incidentStart = incident.start[0];
+            const incidentEnd = incident.end ?? currentTime;
 
-            dayDownTime += overlapLen(dayStart, dayEnd, incidentStart, incidentEnd)
+            dayDownTime += overlapLen(
+                dayStart,
+                dayEnd,
+                incidentStart,
+                incidentEnd
+            );
         }
 
-        const dayPercent = (((dayMonitorTime - dayDownTime) / dayMonitorTime) * 100).toPrecision(4)
+        const dayPercent = (
+            ((dayMonitorTime - dayDownTime) / dayMonitorTime) *
+            100
+        ).toPrecision(4);
 
         uptimePercentBars.push(
             <Tooltip
@@ -52,12 +59,21 @@ export default function DetailBar({
                         'No Data'
                     ) : (
                         <>
-                            <div>{dayPercent + '% at ' + new Date(dayStart * 1000).toLocaleDateString()}</div>
-                            {dayDownTime > 0 ?
-                                <div>{`Down for ${moment.preciseDiff(moment(0), moment(dayDownTime * 1000))}`}</div>
-                                :
+                            <div>
+                                {dayPercent +
+                                    '% at ' +
+                                    new Date(
+                                        dayStart * 1000
+                                    ).toLocaleDateString()}
+                            </div>
+                            {dayDownTime > 0 ? (
+                                <div>{`Down for ${moment.preciseDiff(
+                                    moment(0),
+                                    moment(dayDownTime * 1000)
+                                )}`}</div>
+                            ) : (
                                 <div>No incidents found</div>
-                            }
+                            )}
                             {/* TODO: latency detail for each bar */}
                         </>
                     )
@@ -70,11 +86,11 @@ export default function DetailBar({
                         background: getColor(dayPercent, false),
                         borderRadius: '2px',
                         marginLeft: '1px',
-                        marginRight: '1px',
+                        marginRight: '1px'
                     }}
                 />
             </Tooltip>
-        )
+        );
     }
 
     return (
@@ -84,13 +100,16 @@ export default function DetailBar({
                     display: 'flex',
                     flexWrap: 'nowrap',
                     marginTop: '10px',
-                    marginBottom: '5px',
+                    marginBottom: '5px'
                 }}
                 visibleFrom="540"
                 ref={barRef}
             >
-                {uptimePercentBars.slice(Math.floor(Math.max(9 * 90 - barRect.width, 0) / 9), 90)}
+                {uptimePercentBars.slice(
+                    Math.floor(Math.max(9 * 90 - barRect.width, 0) / 9),
+                    90
+                )}
             </Box>
         </>
-    )
+    );
 }
