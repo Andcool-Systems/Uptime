@@ -89,19 +89,6 @@ const workerConfig = {
             }
         },
         {
-            id: 'discord',
-            name: 'Discord Open Graph provider',
-            method: 'GET',
-            target: 'https://discord.andcool.ru/123/123',
-            tooltip: 'Discord Open Graph provider',
-            statusPageLink: 'https://discord.andcool.ru',
-            expectedCodes: [404],
-            timeout: 30000,
-            headers: {
-                'User-Agent': 'Uptimeflare'
-            }
-        },
-        {
             id: 'activity',
             name: 'Andcool Activity API',
             method: 'GET',
