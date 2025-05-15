@@ -37,7 +37,7 @@ export default function DetailBar({
             currentTime
         );
 
-        const dayMonitorTime = _dayMonitorTime ? 0 : 60 * 60 * 24;
+        const dayMonitorTime = !_dayMonitorTime ? 0 : 60 * 60 * 24;
         let dayDownTime = 0;
 
         for (let incident of state.incident[monitor.id]) {
