@@ -1,12 +1,12 @@
 const pageConfig = {
     // Title for your status page
-    title: "Andcool Services Status",
+    title: 'Andcool Services Status',
     // Links shown at the header of your status page, could set `highlight` to `true`
     links: [
         { link: 'https://andcool.ru', label: 'Website' },
         { link: 'https://github.com/Andcool-Systems', label: 'GitHub' }
-    ],
-}
+    ]
+};
 
 const workerConfig = {
     // Write KV at most every 10 minutes unless the status changed
@@ -49,7 +49,7 @@ const workerConfig = {
             timeout: 30000,
             headers: {
                 'User-Agent': 'Uptimeflare'
-            },
+            }
         },
         {
             id: 'pplbandage_api',
@@ -62,7 +62,20 @@ const workerConfig = {
             timeout: 30000,
             headers: {
                 'User-Agent': 'Uptimeflare'
-            },
+            }
+        },
+        {
+            id: 'pplbandage_api_discord',
+            name: 'PPLBandage Discord Proxy',
+            method: 'GET',
+            target: 'https://pplbandage.ru/api/v1/ping/discord',
+            tooltip: 'Proxy for Discord API and CDN',
+            statusPageLink: 'https://pplbandage.ru/api/v1/discord',
+            expectedCodes: [200],
+            timeout: 30000,
+            headers: {
+                'User-Agent': 'Uptimeflare'
+            }
         },
         {
             id: 'pepsi_site',
@@ -73,7 +86,7 @@ const workerConfig = {
             statusPageLink: 'https://pepsi.andcool.ru',
             expectedCodes: [200],
             timeout: 30000,
-            headers: {},
+            headers: {}
         },
         {
             id: 'json_stats',
@@ -99,7 +112,7 @@ const workerConfig = {
             timeout: 30000,
             headers: {
                 'User-Agent': 'Uptimeflare'
-            },
+            }
         },
         {
             id: 'mc-oauth-api',
@@ -112,7 +125,7 @@ const workerConfig = {
             timeout: 30000,
             headers: {
                 'User-Agent': 'Uptimeflare'
-            },
+            }
         },
         {
             id: 'when_ppl',
@@ -125,11 +138,10 @@ const workerConfig = {
             timeout: 30000,
             headers: {
                 'User-Agent': 'Uptimeflare'
-            },
+            }
         }
     ],
-    notification: {
-    },
+    notification: {},
     callbacks: {
         onStatusChange: async (
             env: any,
@@ -139,28 +151,37 @@ const workerConfig = {
             timeNow: number,
             reason: string
         ) => {
-            const downtimeDuration = Math.round((timeNow - timeIncidentStart) / 60);
+            const downtimeDuration = Math.round(
+                (timeNow - timeIncidentStart) / 60
+            );
 
             let message: string;
             if (isUp) {
-                message = `✅ *${monitor.name}* is up!\n` +
-                    `The service is up again after being down for *${downtimeDuration} minutes.*`
+                message =
+                    `✅ *${monitor.name}* is up!\n` +
+                    `The service is up again after being down for *${downtimeDuration} minutes.*`;
             } else {
-                message = `🔴 *${monitor.name}* is currently down.\n` +
-                    `Service is unavailable. *Issue:* ${reason || 'unspecified'}`
+                message =
+                    `🔴 *${monitor.name}* is currently down.\n` +
+                    `Service is unavailable. *Issue:* ${
+                        reason || 'unspecified'
+                    }`;
             }
 
-            await fetch(`https://api.telegram.org/bot${env.TG_TOKEN}/sendMessage`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    chat_id: "1197005557",
-                    text: message,
-                    parse_mode: "Markdown"
-                })
-            });
+            await fetch(
+                `https://api.telegram.org/bot${env.TG_TOKEN}/sendMessage`,
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        chat_id: '1197005557',
+                        text: message,
+                        parse_mode: 'Markdown'
+                    })
+                }
+            );
         },
         onIncident: async (
             env: any,
@@ -171,9 +192,9 @@ const workerConfig = {
         ) => {
             // This callback will be called EVERY 1 MINTUE if there's an on-going incident for any monitor
             // Write any Typescript code here
-        },
-    },
-}
+        }
+    }
+};
 
 // Don't forget this, otherwise compilation fails.
-export { pageConfig, workerConfig }
+export { pageConfig, workerConfig };
