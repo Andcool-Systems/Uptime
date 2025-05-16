@@ -71,7 +71,7 @@ const workerConfig = {
             target: 'https://pplbandage.ru/api/v1/ping/discord',
             tooltip: 'Proxy for Discord API and CDN',
             statusPageLink: 'https://pplbandage.ru/api/v1/discord',
-            expectedCodes: [200],
+            expectedCodes: [200, 429],
             timeout: 30000,
             headers: {
                 'User-Agent': 'Uptimeflare'
