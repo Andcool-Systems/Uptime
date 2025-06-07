@@ -89,6 +89,28 @@ const workerConfig = {
             headers: {}
         },
         {
+            id: 'fu_site',
+            name: 'File Uploader (fu) site',
+            method: 'GET',
+            target: 'https://fu.andcool.ru',
+            tooltip: 'Public file sharing service',
+            statusPageLink: 'https://fu.andcool.ru',
+            expectedCodes: [200],
+            timeout: 30000,
+            headers: {}
+        },
+        {
+            id: 'fu_api',
+            name: 'File Uploader (fu) API',
+            method: 'GET',
+            target: 'https://fu.andcool.ru/api',
+            tooltip: 'Public file sharing service API',
+            statusPageLink: 'https://fu.andcool.ru/api',
+            expectedCodes: [200],
+            timeout: 30000,
+            headers: {}
+        },
+        {
             id: 'json_stats',
             name: 'JSON Stats Widget',
             method: 'GET',
