@@ -89,7 +89,7 @@ const workerConfig = {
             headers: {}
         },
         {
-            id: 'fu_site',
+            id: 'fu',
             name: 'File Uploader (fu) site',
             method: 'GET',
             target: 'https://fu.andcool.ru',
