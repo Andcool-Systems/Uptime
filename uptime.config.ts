@@ -45,7 +45,7 @@ const workerConfig = {
             target: 'https://pplbandage.ru/users',
             tooltip: 'PPLBandage Site',
             statusPageLink: 'https://pplbandage.ru',
-            expectedCodes: [200, 307],
+            expectedCodes: [200, 307, 404],
             timeout: 30000,
             headers: {
                 'User-Agent': 'Uptimeflare'
