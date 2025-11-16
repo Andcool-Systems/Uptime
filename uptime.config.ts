@@ -92,9 +92,9 @@ const workerConfig = {
             id: 'fu',
             name: 'File Uploader (fu) site',
             method: 'GET',
-            target: 'https://fu.andcool.me',
+            target: 'https://fu.andcool.ru',
             tooltip: 'Public file sharing service',
-            statusPageLink: 'https://fu.andcool.me',
+            statusPageLink: 'https://fu.andcool.ru',
             expectedCodes: [200],
             timeout: 30000,
             headers: {}
@@ -103,9 +103,9 @@ const workerConfig = {
             id: 'fu_api',
             name: 'File Uploader (fu) API',
             method: 'GET',
-            target: 'https://fu.andcool.me/api',
+            target: 'https://fu.andcool.ru/api',
             tooltip: 'Public file sharing service API',
-            statusPageLink: 'https://fu.andcool.me/api',
+            statusPageLink: 'https://fu.andcool.ru/api',
             expectedCodes: [200],
             timeout: 30000,
             headers: {}
