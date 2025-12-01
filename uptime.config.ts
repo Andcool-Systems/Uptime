@@ -148,19 +148,6 @@ const workerConfig = {
             headers: {
                 'User-Agent': 'Uptimeflare'
             }
-        },
-        {
-            id: 'when_ppl',
-            name: 'Когда Пепеленд?',
-            method: 'GET',
-            target: 'https://xn--80afdbeaa8aovdpb.xn--p1ai',
-            tooltip: 'Когда Пепеленд?',
-            statusPageLink: 'https://xn--80afdbeaa8aovdpb.xn--p1ai',
-            expectedCodes: [200],
-            timeout: 30000,
-            headers: {
-                'User-Agent': 'Uptimeflare'
-            }
         }
     ],
     notification: {},
