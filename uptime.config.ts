@@ -78,6 +78,30 @@ const workerConfig = {
             }
         },
         {
+            id: 'pplpack_site',
+            name: 'Pepeland Pack Wiki Site',
+            method: 'GET',
+            target: 'https://pplpack.wiki',
+            tooltip: 'Pepeland Pack Wiki Site',
+            statusPageLink: 'https://pplpack.wiki',
+            expectedCodes: [200, 307, 404],
+            timeout: 30000,
+            headers: {
+                'User-Agent': 'Uptimeflare'
+            }
+        },
+        {
+            id: 'pplpack_api',
+            name: 'Pepeland Pack Wiki API',
+            method: 'GET',
+            target: 'https://pplpack.wiki/api',
+            expectedCodes: [200],
+            timeout: 30000,
+            headers: {
+                'User-Agent': 'Uptimeflare'
+            }
+        },
+        {
             id: 'pepsi_site',
             name: 'PEPSI Site',
             method: 'GET',
